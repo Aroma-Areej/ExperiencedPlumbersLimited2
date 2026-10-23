@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emergency Plumbing - Experienced Plumbers LTD</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    :root {
+      --primary-dark: #0a1e3f;
+      --primary-blue: #0084c7;
+      --accent-purple: #7c3aed;
+      --text-dark: #0f172a;
+      --text-muted: #334155;
+      --bg-light: #ffffff;
+      --bg-card: #f8fafc;
+      --footer-bg: #0b1329;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: #ffffff; color: var(--text-dark); overflow-x: hidden; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    header { background-color: var(--bg-light); padding: 12px 5%; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); position: relative; z-index: 100; }
+    nav { display: flex; justify-content: space-between; align-items: center; max-width: 1350px; margin: 0 auto; }
+    .logo-container img { height: 90px; object-fit: contain; }
+    .nav-links { display: flex; list-style: none; gap: 32px; }
+    .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 700; font-size: 1.05rem; transition: color 0.3s ease; }
+    .nav-links a:hover { color: var(--primary-blue); }
+
+    .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.8rem; color: var(--primary-dark); cursor: pointer; }
+    .close-menu-btn { display: none; }
+
+    .service-detail-container { max-width: 1350px; margin: 60px auto; padding: 0 5%; }
+    .service-detail-card { display: grid; grid-template-columns: 1fr 1.3fr; gap: 30px; align-items: center; background-color: #ffffff; border-radius: 28px; overflow: hidden; }
+    .detail-img-box { width: 100%; height: 100%; min-height: 420px; border-radius: 28px; overflow: hidden; }
+    .detail-img-box img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .detail-content-box { background-color: var(--bg-card); padding: 45px 40px; border-radius: 28px; border-bottom: 3px solid var(--accent-purple); height: 100%; display: flex; flex-direction: column; justify-content: center; }
+    .detail-title { font-size: 2.5rem; font-weight: 900; color: var(--primary-dark); margin-bottom: 20px; }
+    .detail-text { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; font-weight: 500; margin-bottom: 18px; }
+
+    .cta-banner { max-width: 1350px; margin: 40px auto 70px auto; padding: 0 5%; text-align: center; }
+    .btn-call { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; background: #ffffff; color: var(--accent-purple); border: 2px solid rgba(124, 58, 237, 0.2); padding: 16px 30px; border-radius: 50px; font-weight: 800; font-size: 1.1rem; text-decoration: none; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+
+    footer { background-color: var(--footer-bg); color: #94a3b8; padding-top: 60px; }
+    .footer-container { max-width: 1350px; margin: 0 auto; padding: 0 5% 50px 5%; display: grid; grid-template-columns: 1.2fr 1.5fr 1fr; gap: 40px; }
+    .footer-col h4, .footer-company-name { color: #ffffff; font-weight: 800; margin-bottom: 18px; }
+    .footer-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-list li { display: flex; align-items: center; gap: 10px; }
+    .footer-list a { color: #94a3b8; text-decoration: none; }
+    .footer-icon { width: 16px; height: 16px; fill: var(--accent-purple); }
+    .footer-services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; }
+    .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 25px 5%; text-align: center; }
+
+    @media (max-width: 992px) {
+      .mobile-menu-btn { display: block !important; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: #ffffff; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; overflow: hidden; list-style: none; padding: 0; margin: 0; z-index: 1000; }
+      .nav-links.active { display: flex !important; }
+      .close-menu-btn { display: block !important; background: var(--accent-purple); color: #ffffff; border: none; font-size: 1.5rem; padding: 12px 20px; text-align: right; cursor: pointer; width: 100%; }
+      .nav-links li a { display: block; padding: 16px 20px; text-decoration: none; color: var(--text-dark); font-weight: 700; border-bottom: 1px solid #f1f5f9; }
+      .nav-links li a:hover { background-color: var(--accent-purple) !important; color: #ffffff !important; }
+      
+      .service-detail-card { grid-template-columns: 1fr; }
+      .detail-img-box { min-height: 300px; }
+      .footer-container { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo-container"><a href="index.html"><img src="logo2.jpeg" alt="Experienced Plumbers LTD Logo"></a></div>
+      <button class="mobile-menu-btn" onclick="toggleMenu()">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><button class="close-menu-btn" onclick="toggleMenu()">&times;</button></li>
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#about">About us</a></li>
+        <li><a href="index.html#services">Our services</a></li>
+        <li><a href="index.html#testimonials">Testimonials</a></li>
+        <li><a href="index.html#contact">Contact us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="service-detail-container">
+    <div class="service-detail-card">
+      <div class="detail-img-box">
+        <img src="Emergency.png" alt="Emergency Plumbing">
+      </div>
+      <div class="detail-content-box">
+        <h1 class="detail-title">Emergency Plumbing</h1>
+        <p class="detail-text">
+          When plumbing issues strike unexpectedly, you need prompt and professional emergency plumbing solutions. Our team of skilled engineers is always ready to tackle any challenge, from burst pipes to overflowing toilets, ensuring your home or business is back to normal in no time. We understand the urgency of such situations, which is why our experts are equipped with the latest tools and techniques to diagnose and fix problems efficiently.
+        </p>
+        <p class="detail-text">
+          Whether it's a minor leak or a major plumbing disaster, we provide comprehensive emergency plumbing services tailored to your needs. Our commitment to quality and speed means you can trust us to handle everything from quick repairs to complete system overhauls. Rest assured, our emergency service operates around the clock, so you never have to wait long for the help you need. Keep your property safe and your plumbing in top condition with our reliable and swift emergency plumbing solutions, available whenever you need us.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <div class="cta-banner">
+    <a href="tel:07520637439" class="btn-call">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+      </svg>
+      GIVE US A CALL +447520685052
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <div class="footer-company-name">EXPERIENCED PLUMBERS LTD</div>
+        <ul class="footer-list">
+          <li><svg class="footer-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> 8 Skipsey Avenue, London, England, E6 6HW</li>
+          <li><svg class="footer-icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> +447520685052</li>
+          <li><svg class="footer-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> helloplumbersltd@mail.com</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Our services</h4>
+        <div class="footer-services-grid">
+          <ul class="footer-list">
+            <li><a href="plumber-repair.html">Plumber Repair</a></li>
+            <li><a href="plumbing-installations.html">Plumbing Installations</a></li>
+            <li><a href="emergency-plumbing.html">Emergency Plumbing</a></li>
+          </ul>
+          <ul class="footer-list">
+            <li><a href="boiler-repair.html">Boiler Repair</a></li>
+            <li><a href="emergency-gas-leak.html">Emergency Gas Leak</a></li>
+            <li><a href="drainage-services.html">Drainage Services</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Our contacts</h4>
+        <ul class="footer-list">
+          <li>helloplumbersltd@mail.com</li>
+          <li>+447520685052</li>
+          <li>24/7 service</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>Copyright &copy; Experienced Plumbers LTD. All Rights Reserved</p></div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
